@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="master_discovery_fkie" type="master_discovery" name="mm_discovery"/>
+    <node pkg="master_sync_fkie" type="master_sync" name="mm_sync">
+    </node>
+</launch>
