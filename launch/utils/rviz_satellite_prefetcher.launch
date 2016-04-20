@@ -1,0 +1,20 @@
+<launch>
+
+    <node pkg="pioneer_outdoor" type="rviz_satellite_prefetcher.py" name="get_map" output="screen">
+        <rosparam param="url">
+            <![CDATA[
+            http://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}
+            ]]>
+        </rosparam>
+        <param name="z" value="19"/>
+        <rosparam param="bounding_box">
+             -
+                - 8.926837
+                - 46.015499
+             -
+                - 8.911957
+                - 46.036917
+        </rosparam>
+        <param name="directory" value="$(env PWD)"/>
+    </node>
+</launch>
