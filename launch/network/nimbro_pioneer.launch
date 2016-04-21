@@ -1,17 +1,20 @@
 <launch>
 	<arg name="target"/>
-	<node name="udp_sender" pkg="nimbro_topic_transport" type="udp_sender" output="screen">
-        <param name="destination_addr" value="pioneer1" />
-        <param name="destination_port" value="17001" />
-        <rosparam param="topics" subst-value="true">
-            - name: "$(arg target)/joy"
-   			  compress: true
-			- name: "$(arg target)/des_vel"
-			  compress: true
-		    - name: "$(arg target)/waypoint"
-  			  compress: true
-			- name: "$(arg target)/mave_base_simple/goal"
-    	      compress: true
-        </rosparam>
+	<arg name="port" default="8888"/>
+	<node name="$(anon udp_sender)" pkg="nimbro_topic_transport" type="udp_sender" output="screen">
+        <param name="destination_addr" value="$(arg target)" />
+        <param name="destination_port" value="$(arg port)" />
+		<rosparam param="topics" subst_value="true">
+- name: "/$(arg target)/joy"
+  compress: true
+- name: "/$(arg target)/des_vel"
+  compress: true
+- name: "/$(arg target)/waypoint"
+  compress: true
+- name: "/$(arg target)/move_base_simple/goal"
+  compress: true
+- name: "/$(arg target)/initialpose"
+  compress: true
+</rosparam>
 	</node>
 </launch>
