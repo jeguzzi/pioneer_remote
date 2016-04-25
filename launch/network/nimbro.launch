@@ -5,10 +5,16 @@
 	<node name="udp_receiver2" pkg="nimbro_topic_transport" type="udp_receiver" output="screen">
 		<param name="port" value="10002"/>
 	</node>
+	<node name="udp_receiver3" pkg="nimbro_topic_transport" type="udp_receiver" output="screen">
+		<param name="port" value="10003"/>
+	</node>
 	<include file="$(find pioneer_remote)/launch/network/nimbro_pioneer.launch">
 		<arg name="target" value="pioneer1"/>
 	</include>
 	<include file="$(find pioneer_remote)/launch/network/nimbro_pioneer.launch">
 		<arg name="target" value="pioneer2"/>
+	</include>
+	<include file="$(find pioneer_remote)/launch/network/nimbro_pioneer.launch">
+		<arg name="target" value="pioneer3"/>
 	</include>
 </launch>
